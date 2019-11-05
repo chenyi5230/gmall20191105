@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bubble.gmall.user.mapper.UmsMemberLevelMapper">
+  <resultMap id="BaseResultMap" type="com.bubble.gmall.bean.UmsMemberLevel">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="growth_point" jdbcType="INTEGER" property="growthPoint" />
+    <result column="default_status" jdbcType="INTEGER" property="defaultStatus" />
+    <result column="free_freight_point" jdbcType="DECIMAL" property="freeFreightPoint" />
+    <result column="comment_growth_point" jdbcType="INTEGER" property="commentGrowthPoint" />
+    <result column="privilege_free_freight" jdbcType="INTEGER" property="privilegeFreeFreight" />
+    <result column="privilege_sign_in" jdbcType="INTEGER" property="privilegeSignIn" />
+    <result column="privilege_comment" jdbcType="INTEGER" property="privilegeComment" />
+    <result column="privilege_promotion" jdbcType="INTEGER" property="privilegePromotion" />
+    <result column="privilege_member_price" jdbcType="INTEGER" property="privilegeMemberPrice" />
+    <result column="privilede_birthday" jdbcType="INTEGER" property="priviledeBirthday" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ums_member_level
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bubble.gmall.bean.UmsMemberLevel">
+    insert into ums_member_level (id, name, growth_point, 
+      default_status, free_freight_point, comment_growth_point, 
+      privilege_free_freight, privilege_sign_in, 
+      privilege_comment, privilege_promotion, privilege_member_price, 
+      privilede_birthday, note)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{growthPoint,jdbcType=INTEGER}, 
+      #{defaultStatus,jdbcType=INTEGER}, #{freeFreightPoint,jdbcType=DECIMAL}, #{commentGrowthPoint,jdbcType=INTEGER}, 
+      #{privilegeFreeFreight,jdbcType=INTEGER}, #{privilegeSignIn,jdbcType=INTEGER}, 
+      #{privilegeComment,jdbcType=INTEGER}, #{privilegePromotion,jdbcType=INTEGER}, #{privilegeMemberPrice,jdbcType=INTEGER}, 
+      #{priviledeBirthday,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.bubble.gmall.bean.UmsMemberLevel">
+    update ums_member_level
+    set name = #{name,jdbcType=VARCHAR},
+      growth_point = #{growthPoint,jdbcType=INTEGER},
+      default_status = #{defaultStatus,jdbcType=INTEGER},
+      free_freight_point = #{freeFreightPoint,jdbcType=DECIMAL},
+      comment_growth_point = #{commentGrowthPoint,jdbcType=INTEGER},
+      privilege_free_freight = #{privilegeFreeFreight,jdbcType=INTEGER},
+      privilege_sign_in = #{privilegeSignIn,jdbcType=INTEGER},
+      privilege_comment = #{privilegeComment,jdbcType=INTEGER},
+      privilege_promotion = #{privilegePromotion,jdbcType=INTEGER},
+      privilege_member_price = #{privilegeMemberPrice,jdbcType=INTEGER},
+      privilede_birthday = #{priviledeBirthday,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, name, growth_point, default_status, free_freight_point, comment_growth_point, 
+    privilege_free_freight, privilege_sign_in, privilege_comment, privilege_promotion, 
+    privilege_member_price, privilede_birthday, note
+    from ums_member_level
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, growth_point, default_status, free_freight_point, comment_growth_point, 
+    privilege_free_freight, privilege_sign_in, privilege_comment, privilege_promotion, 
+    privilege_member_price, privilede_birthday, note
+    from ums_member_level
+  </select>
+</mapper>

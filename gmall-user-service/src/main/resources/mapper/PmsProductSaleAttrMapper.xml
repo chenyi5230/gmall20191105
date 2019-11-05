@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bubble.gmall.user.mapper.PmsProductSaleAttrMapper">
+  <resultMap id="BaseResultMap" type="com.bubble.gmall.bean.PmsProductSaleAttr">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
+    <result column="sale_attr_id" jdbcType="BIGINT" property="saleAttrId" />
+    <result column="sale_attr_name" jdbcType="VARCHAR" property="saleAttrName" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from pms_product_sale_attr
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bubble.gmall.bean.PmsProductSaleAttr">
+    insert into pms_product_sale_attr (id, product_id, sale_attr_id, 
+      sale_attr_name)
+    values (#{id,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, #{saleAttrId,jdbcType=BIGINT}, 
+      #{saleAttrName,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.bubble.gmall.bean.PmsProductSaleAttr">
+    update pms_product_sale_attr
+    set product_id = #{productId,jdbcType=BIGINT},
+      sale_attr_id = #{saleAttrId,jdbcType=BIGINT},
+      sale_attr_name = #{saleAttrName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, product_id, sale_attr_id, sale_attr_name
+    from pms_product_sale_attr
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, product_id, sale_attr_id, sale_attr_name
+    from pms_product_sale_attr
+  </select>
+</mapper>
